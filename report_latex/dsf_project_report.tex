@@ -1,0 +1,65 @@
+% !TEX root = latex_template.tex
+\documentclass[a4paper, titlepage]{article} % Sets the document class to "article", optimized for short documents like essays or reports.
+                                            % Options:
+                                            % - a4paper: sets the paper size to A4 (210mm × 297mm)
+                                            % - titlepage: places the title, author, and date on a separate page
+
+\input{styles/mystyle.sty}                  % Loads the custom style file (preamble settings, macros, colors, environments)
+\hypersetup{
+  pdfauthor={Lukas Maximilian Kapferer},    % Sets the PDF author metadata
+  pdftitle={LaTeX Template},                % Sets the PDF document title
+  pdfsubject={Your Subject},                % Sets the PDF subject field
+  pdfkeywords={},                           % Sets PDF keywords (comma-separated)
+  pdfcreator={LaTeX (latexmk, VS Code, mystyle.sty v1.1)}, % Sets the PDF creator toolchain metadata
+}
+
+% ---------------------------------------------------------------
+%                   --------- Meta ---------
+% ---------------------------------------------------------------
+
+\title{DSF Group Project}
+\author{Lukas Maximilian Kapferer}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\LARGE \textbf{\thetitle} \par}
+    \vspace{2cm}
+    {\large \protect\theauthor\par}
+    \vspace{0.5cm}
+    \small
+    \texttt{\href{mailto:lukas@kapferer.or.at}{lukas@kapferer.or.at}}\\
+    \texttt{\href{https://www.linkedin.com/in/lukas-kapferer}{linkedin.com/in/lukas-kapferer}}\\
+    \vspace{0.5cm}
+    Version from \texttt{\today}
+\end{titlepage}
+
+\clearpage      % Start a new page (flush all pending floats)
+\thispagestyle{empty} % Suppress header and footer (no page number) on this page
+\pagenumbering{roman} % Switch to lowercase Roman numerals (i, ii, iii, ...) for page numbers (typically used for front matter)
+\tableofcontents
+%\chapter*{Overview} % Check for relevance, doubles, define order and then add descriptive comment
+\listoffigures  % Produces the List of Figures with page references (from all captioned figures).
+\listoftables   % Produces the List of Tables with page references (from all captioned tables).
+% \printglossary[type=\acronymtype,title={List of Abbreviations}] % Prints the acronyms list (needs the glossaries package + makeglossaries/biber run).
+% \printglossary[title={Glossary of Terms}]                       % Prints the main glossary (also requires glossaries + makeglossaries/biber).
+\thispagestyle{plain}  % Set the current page style to "plain" (page number centered at the bottom)
+\newpage
+\pagenumbering{arabic} % Restart page numbering using Arabic numerals (1, 2, 3, ...) for main document content
+
+
+% ---------------------------------------------------------------
+%                   --------- Content ---------
+% ---------------------------------------------------------------
+
+% -------- Add .tex documents here --------
+\input{content/main_content.tex}
+% \input{content/bibliography.tex}
+% \input{content/figures_list.tex}
+% input{content/___.tex}
+
+% \printbibliography % Print the bibliography using BibLaTeX (automatically includes all cited references)
+\end{document}

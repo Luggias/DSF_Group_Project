@@ -1,0 +1,2 @@
+# .chktexrc – Deaktivate warnings 18, 36, 44 globally
+CmdLine { -n18 -n36 -n44 }
