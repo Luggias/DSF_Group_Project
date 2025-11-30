@@ -1,3 +1,10 @@
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+import matplotlib.pyplot as plt
+
 def mothers_day(year: int) -> pd.Timestamp:
     """Muttertag CH = 2. Sonntag im Mai."""
     may_first = pd.Timestamp(year, 5, 1)
