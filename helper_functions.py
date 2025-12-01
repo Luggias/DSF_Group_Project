@@ -46,3 +46,14 @@ def holiday_average_last_3_years(df_full: pd.DataFrame, date_func, year: int, ta
     if len(values) == 0:
         return None
     return np.mean(values)
+
+def mape(y_true, y_pred):
+    """
+    Berechnet und returned MAPE.
+    """
+    y_true = np.array(y_true)
+    y_pred = np.array(y_pred)
+    mask = y_true != 0
+    y_true = y_true[mask]
+    y_pred = y_pred[mask]
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
