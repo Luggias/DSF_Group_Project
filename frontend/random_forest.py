@@ -113,7 +113,7 @@ def fetch_weather_forecast(
         "longitude": lon,
         "daily": ",".join(WEATHER_COLUMN_MAP.keys()),
         "forecast_days": days,
-        "timezone": "Europe/Zurich",
+        "timezone": "Europe/Berlin",
     }
     url = "https://api.open-meteo.com/v1/forecast"
     try:
