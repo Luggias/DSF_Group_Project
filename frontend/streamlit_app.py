@@ -37,9 +37,8 @@ def main():
         st.image(str(LOGO_PATH), width=160)
     st.title("Staffing estimation for Restaurant Sonne")
     st.write(
-        "Please select upcoming holidays in the left menu. \n"
-        "Set special events for each of the next 7 days here: "
-        ""
+        "Please select upcoming holidays in the left menu.  \n"
+        "Set special events for each of the next 7 days here:  \n"
         "[Restaurant website](https://www.sonneseehotel.ch/de)"
     )
 
