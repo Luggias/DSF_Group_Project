@@ -18,7 +18,7 @@ from random_forest import (
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 ICON_PATH = ROOT_DIR / "images" / "icon.png"
-LOGO_PATH = ROOT_DIR / "images" / "logo.svg"
+LOGO_PATH = ROOT_DIR / "images" / "logo.png"
 
 st.set_page_config(
     page_title="Staffing Restaurant Sonne",
