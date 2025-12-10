@@ -37,8 +37,8 @@ def main():
         st.image(str(LOGO_PATH), width=160)
     st.title("Staffing estimation for Restaurant Sonne")
     st.write(
-        "Trained on `data/dataset-merged-2.csv` (daily revenue as target). "
-        "Set special events and holiday levels for the next 7 days; weather is fetched via API or monthly-median fallback."
+        "Select upcoming holiday levels in the left menu."
+        "Set special events and holiday levels for each of the next 7 days."
     )
 
     model, feature_cols, births_map, weather_fallback, history, last_known_date = load_model()
