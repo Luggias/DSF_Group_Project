@@ -37,8 +37,8 @@ def main():
         st.image(str(LOGO_PATH), width=160)
     st.title("Staffing estimation for Restaurant Sonne")
     st.write(
-        "Select upcoming holiday levels in the left menu."
-        "Set special events and holiday levels for each of the next 7 days."
+        "Please select the values for upcoming holidays in the left menu. "
+        "Set special events for each of the next 7 days here:"
     )
 
     model, feature_cols, births_map, weather_fallback, history, last_known_date = load_model()
