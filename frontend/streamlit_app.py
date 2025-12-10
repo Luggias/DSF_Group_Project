@@ -38,7 +38,9 @@ def main():
     st.title("Staffing estimation for Restaurant Sonne")
     st.write(
         "Please select upcoming holidays in the left menu. \n"
-        "Set special events for each of the next 7 days here:"
+        "Set special events for each of the next 7 days here: "
+        ""
+        "[Restaurant website](https://www.sonneseehotel.ch/de)"
     )
 
     model, feature_cols, births_map, weather_fallback, history, last_known_date = load_model()
