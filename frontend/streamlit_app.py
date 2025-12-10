@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 from datetime import date, timedelta
+from pathlib import Path
 from random_forest import (
     TARGET_COL,
     EVENT_WEIGHTS,
@@ -15,9 +16,13 @@ from random_forest import (
 )
 
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+ICON_PATH = ROOT_DIR / "images" / "icon.png"
+LOGO_PATH = ROOT_DIR / "images" / "logo.svg"
+
 st.set_page_config(
     page_title="Staffing Restaurant Sonne",
-    page_icon="../images/icon.png",
+    page_icon=str(ICON_PATH),
     layout="wide",
 )
 
@@ -28,7 +33,8 @@ def load_model():
 
 
 def main():
-    st.image("../images/logo.svg")
+    if LOGO_PATH.exists():
+        st.image(str(LOGO_PATH), width=160)
     st.title("Staffing estimation for Restaurant Sonne")
     st.write(
         "Trained on `data/dataset-merged-2.csv` (daily revenue as target). "
