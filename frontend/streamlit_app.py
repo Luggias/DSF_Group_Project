@@ -16,8 +16,8 @@ from random_forest import (
 
 
 st.set_page_config(
-    page_title="7-Day Forecast",
-    page_icon="📈",
+    page_title="Staffing Restaurant Sonne",
+    page_icon="../images/icon.png",
     layout="wide",
 )
 
@@ -28,7 +28,8 @@ def load_model():
 
 
 def main():
-    st.title("📈 Weekly forecast with events and weather")
+    st.image("../images/logo.svg")
+    st.title("Staffing estimation for Restaurant Sonne")
     st.write(
         "Trained on `data/dataset-merged-2.csv` (daily revenue as target). "
         "Set special events and holiday levels for the next 7 days; weather is fetched via API or monthly-median fallback."
@@ -38,9 +39,16 @@ def main():
 
     with st.sidebar:
         st.header("Settings")
-        start_default = max(date.today(), last_known_date + timedelta(days=1))
-        start_date = st.date_input("Start date (day 1 of forecast)", value=start_default, help="Default: today")
+        start_default = max(date.today() + timedelta(days=3), last_known_date + timedelta(days=1))
+        start_date = st.date_input("Start date (day 1 of forecast)", value=start_default, help="Default: today + 3 days")
         st.caption("Weather location is fixed: Restaurant Sonne Sempachersee (coordinates stored in code).")
+        st.markdown("---")
+        holiday_level = st.selectbox(
+            "Holiday level (applied to all 7 days)",
+            options=[("No holidays", 0.0), ("Partial holidays", 0.5), ("Full holidays", 1.0)],
+            format_func=lambda x: x[0],
+        )
+        holiday_value = holiday_level[1]
 
     weather_df, source = fetch_weather_forecast(start_date, 7, DEFAULT_LAT, DEFAULT_LON)
     used_fallback = False
@@ -53,12 +61,11 @@ def main():
 
     week_df = initial_week_frame(start_date, weather_df)
     event_options = list(EVENT_WEIGHTS.keys())
-    ferien_options = [("No holidays", 0.0), ("Partial holidays", 0.5), ("Full holidays", 1.0)]
 
     selections = []
     st.subheader("Special events & holidays (per day)")
     for _, r in week_df.iterrows():
-        col1, col2, col3 = st.columns([1.5, 1.5, 1])
+        col1, col2 = st.columns([2, 1])
         with col1:
             ev = st.selectbox(
                 f"{r['Datum'].date()} – {r['Wochentag']}",
@@ -66,22 +73,14 @@ def main():
                 key=f"event-{r['Datum'].date()}",
             )
         with col2:
-            fer_label = st.selectbox(
-                "Holiday level",
-                options=ferien_options,
-                format_func=lambda x: x[0],
-                key=f"ferien-{r['Datum'].date()}",
-            )
-            fer_value = fer_label[1]
-        with col3:
-            st.write("")  # spacer
+            st.write(f"Holiday value: {holiday_value}")
         selections.append(
             {
                 "Datum": r["Datum"],
                 "Wochentag": r["Wochentag"],
                 "Special Event": ev,
                 "Special-Day-Value": EVENT_WEIGHTS[ev],
-                "Ferien-Value": fer_value,
+                "Ferien-Value": holiday_value,
                 "Niederschlag Tagessumme 6 UTC": r["Niederschlag Tagessumme 6 UTC"],
                 "Sonnenscheindauer Tagessumme": r["Sonnenscheindauer Tagessumme"],
                 "Lufttemperatur 2m Tagesmittel": r["Lufttemperatur 2m Tagesmittel"],
@@ -94,8 +93,10 @@ def main():
         forecast_df = run_forecast(model, feature_cols, history, births_map, weather_df, edited_df)
         st.subheader("Forecast (7 days)")
 
-        # Revenue histogram
-        st.bar_chart(forecast_df.set_index("Datum")[TARGET_COL])
+        # Revenue line chart (index as string to avoid time-of-day ticks)
+        chart_df = forecast_df.copy()
+        chart_df["Label"] = chart_df["Datum"].astype(str)
+        st.line_chart(chart_df.set_index("Label")[TARGET_COL])
 
         # Per-day overview (no table)
         st.markdown("#### Daily overview")
