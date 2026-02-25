@@ -532,7 +532,8 @@ def main():
         # ---- Plotly chart ----
         st.markdown('<div class="section-title">📈 Revenue Forecast</div>', unsafe_allow_html=True)
 
-        labels = [f"{r['Weekday']} {r['Datum']}" for _, r in forecast_df.iterrows()]
+        labels = [r['Weekday'] for _, r in forecast_df.iterrows()]
+        hover_labels = [f"{r['Weekday']} {r['Datum']}" for _, r in forecast_df.iterrows()]
         revenues = forecast_df[TARGET_COL].tolist()
 
         fig = go.Figure()
@@ -546,7 +547,8 @@ def main():
                 line=dict(color="#E8913A", width=3),
                 marker=dict(size=8, color="#E8913A", line=dict(width=2, color="#0E1117")),
                 fillcolor="rgba(232,145,58,0.10)",
-                hovertemplate="<b>%{x}</b><br>CHF %{y:,.0f}<extra></extra>",
+                customdata=hover_labels,
+                hovertemplate="<b>%{customdata}</b><br>CHF %{y:,.0f}<extra></extra>",
             )
         )
         # Average line
@@ -554,7 +556,7 @@ def main():
             y=avg_rev,
             line_dash="dot",
             line_color="rgba(250,250,250,0.25)",
-            annotation_text=f"Ø CHF {avg_rev:,.0f}",
+            annotation_text=f"Ø {avg_rev:,.0f}",
             annotation_position="top left",
             annotation_font_color="rgba(250,250,250,0.5)",
             annotation_font_size=11,
@@ -562,8 +564,8 @@ def main():
         fig.update_layout(
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=30, b=20),
-            height=350,
+            margin=dict(l=0, r=5, t=20, b=10),
+            height=320,
             xaxis=dict(
                 showgrid=False,
                 color="#8B95A5",
@@ -573,8 +575,7 @@ def main():
                 showgrid=True,
                 gridcolor="rgba(250,250,250,0.05)",
                 color="#8B95A5",
-                tickfont=dict(size=11),
-                tickprefix="CHF ",
+                tickfont=dict(size=10),
             ),
             showlegend=False,
             hoverlabel=dict(
