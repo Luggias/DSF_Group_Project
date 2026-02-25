@@ -222,16 +222,25 @@ st.markdown(
     button[title="View fullscreen"] {display: none !important;}
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
-    .stBottom {visibility: hidden !important; pointer-events: none !important;}
-    /* Embed-safe: no border, allow scrolling */
+    /* Bottom toolbar: remove from flow entirely */
+    .stBottom,
+    [data-testid="stBottom"],
+    [data-testid="stBottomBlockContainer"] {
+        display: none !important;
+        position: fixed !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    /* Embed-safe: no border, iOS touch scroll */
     .stApp {
         outline: none !important;
         border: none !important;
+        -webkit-overflow-scrolling: touch !important;
     }
-    /* Reduce top gap from hidden header, add bottom space for full scroll */
+    /* Reduce top gap, generous bottom padding for full scroll reach */
     .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
         padding-top: 1rem !important;
-        padding-bottom: 2rem !important;
+        padding-bottom: 4rem !important;
     }
 
     /* ================================================================
