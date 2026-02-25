@@ -222,32 +222,14 @@ st.markdown(
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
 
-    /* Header & bottom: collapse to 0px instead of display:none
-       so Streamlit's internal scroll height calc stays valid */
-    header[data-testid="stHeader"] {
-        height: 0 !important;
-        min-height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-        visibility: hidden !important;
-    }
-    .stBottom,
-    [data-testid="stBottom"],
-    [data-testid="stBottomBlockContainer"] {
-        height: 0 !important;
-        min-height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-        visibility: hidden !important;
-    }
+    /* Header & bottom bar */
+    header[data-testid="stHeader"] {display: none !important;}
+    .stBottom, [data-testid="stBottom"] {display: none !important;}
 
-    /* Embed-safe: no border, iOS touch scroll */
+    /* Embed-safe */
     .stApp {
         outline: none !important;
         border: none !important;
-        -webkit-overflow-scrolling: touch !important;
     }
     /* Reduce top gap, bottom padding for scroll reach */
     .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
@@ -661,6 +643,9 @@ def main():
         st.info(
             "👆 Select special events for each day above, then click **Run Forecast**."
         )
+
+    # ---- Bottom spacer for mobile scroll reach ----
+    st.markdown('<div style="height: 80px;"></div>', unsafe_allow_html=True)
 
 
 def _img_to_base64(path: Path) -> str:
