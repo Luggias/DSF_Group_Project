@@ -645,7 +645,7 @@ def main():
         )
 
     # ---- Bottom spacer for mobile scroll reach ----
-    st.markdown('<div style="height: 150px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height: 110px;"></div>', unsafe_allow_html=True)
 
 
 def _img_to_base64(path: Path) -> str:
