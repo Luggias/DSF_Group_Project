@@ -255,25 +255,26 @@ st.markdown(
             font-size: 1.3rem;
         }
 
-        /* Overview table: hide bar + event columns, compact layout */
+        /* Overview table: hide bar + event columns, keep weather */
         .overview-table .ov-bar-cell,
         .overview-table .ov-event {
             display: none;
         }
         .overview-table .ov-weather {
             white-space: normal;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
         }
         .overview-table td {
-            padding: 0.5rem 0.5rem;
+            padding: 0.4rem 0.35rem;
         }
         .overview-table .ov-revenue {
-            font-size: 0.88rem;
-            min-width: 90px;
+            font-size: 0.8rem;
+            min-width: unset;
+            padding-left: 0.2rem;
         }
         .overview-table .ov-day {
-            font-size: 0.85rem;
-            min-width: 70px;
+            font-size: 0.82rem;
+            min-width: unset;
         }
 
         .section-title {
@@ -298,10 +299,19 @@ st.markdown(
         }
 
         .overview-table .ov-weather {
-            display: none;
+            font-size: 0.65rem;
+        }
+        .overview-table .ov-revenue {
+            font-size: 0.75rem;
+        }
+        .overview-table .ov-day {
+            font-size: 0.78rem;
+        }
+        .overview-table .ov-day span {
+            font-size: 0.65rem;
         }
         .overview-table td {
-            padding: 0.45rem 0.4rem;
+            padding: 0.35rem 0.25rem;
         }
     }
     </style>
