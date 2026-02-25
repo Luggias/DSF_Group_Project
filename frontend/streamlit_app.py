@@ -223,21 +223,12 @@ st.markdown(
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
     .stBottom {display: none !important; height: 0 !important; min-height: 0 !important;}
-    /* Remove iframe embed border & fix scroll */
-    html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-        background: #0E1117 !important;
-    }
+    /* Embed-safe: no border, allow scrolling */
     .stApp {
-        outline: none;
-        border: none;
-        overflow: auto;
-        margin: 0 !important;
-        padding: 0 !important;
+        outline: none !important;
+        border: none !important;
     }
-    /* Remove top padding from main block */
+    /* Reduce top gap from hidden header */
     .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
         padding-top: 1rem !important;
     }
