@@ -204,9 +204,9 @@ st.markdown(
     }
 
     /* ---- Hide ALL Streamlit branding ---- */
-    #MainMenu {visibility: hidden;}
-    footer {display: none !important; visibility: hidden;}
-    header[data-testid="stHeader"] {visibility: hidden;}
+    #MainMenu {display: none !important;}
+    footer {display: none !important;}
+    header[data-testid="stHeader"] {display: none !important;}
     .stDeployButton {display: none !important;}
     [data-testid="stStatusWidget"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
@@ -214,7 +214,6 @@ st.markdown(
     ._profileContainer_gzau3_53 {display: none !important;}
     [data-testid="stDecoration"] {display: none !important;}
     .stAppDeployButton {display: none !important;}
-    /* "Built with Streamlit" footer & fullscreen buttons */
     .reportview-container .main footer,
     .stApp > footer,
     footer.css-164nlkn,
@@ -223,10 +222,9 @@ st.markdown(
     button[title="View fullscreen"] {display: none !important;}
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
-    .stBottom {display: none !important;}
-    /* Remove iframe embed border */
-    .stApp { outline: none; border: none; }
-    iframe[title="streamlit"] { border: none; }
+    .stBottom {display: none !important; height: 0 !important; min-height: 0 !important;}
+    /* Remove iframe embed border & fix scroll */
+    .stApp { outline: none; border: none; overflow: auto; }
 
     /* ================================================================
        MOBILE RESPONSIVE STYLES
