@@ -255,18 +255,25 @@ st.markdown(
             font-size: 1.3rem;
         }
 
-        .day-card {
-            padding: 0.85rem 1rem;
+        /* Overview table: hide bar + event columns, compact layout */
+        .overview-table .ov-bar-cell,
+        .overview-table .ov-event {
+            display: none;
         }
-        .day-card .day-name {
-            font-size: 0.95rem;
+        .overview-table .ov-weather {
+            white-space: normal;
+            font-size: 0.72rem;
         }
-        .day-card .revenue-badge {
-            font-size: 1rem;
+        .overview-table td {
+            padding: 0.5rem 0.5rem;
         }
-        .day-card .weather-row {
-            gap: 0.8rem;
-            font-size: 0.78rem;
+        .overview-table .ov-revenue {
+            font-size: 0.88rem;
+            min-width: 90px;
+        }
+        .overview-table .ov-day {
+            font-size: 0.85rem;
+            min-width: 70px;
         }
 
         .section-title {
@@ -290,15 +297,11 @@ st.markdown(
             font-size: 1.15rem;
         }
 
-        .day-card .day-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.3rem;
+        .overview-table .ov-weather {
+            display: none;
         }
-
-        .day-card .weather-row {
-            flex-direction: column;
-            gap: 0.35rem;
+        .overview-table td {
+            padding: 0.45rem 0.4rem;
         }
     }
     </style>
