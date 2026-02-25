@@ -222,15 +222,16 @@ st.markdown(
     button[title="View fullscreen"] {display: none !important;}
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
-    .stBottom {display: none !important; height: 0 !important; min-height: 0 !important;}
+    .stBottom {visibility: hidden !important; pointer-events: none !important;}
     /* Embed-safe: no border, allow scrolling */
     .stApp {
         outline: none !important;
         border: none !important;
     }
-    /* Reduce top gap from hidden header */
+    /* Reduce top gap from hidden header, add bottom space for full scroll */
     .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
         padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
     }
 
     /* ================================================================
