@@ -203,9 +203,15 @@ st.markdown(
         min-width: 260px !important;
     }
 
-    /* ---- Hide default Streamlit footer & hamburger ---- */
+    /* ---- Hide ALL Streamlit branding ---- */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    header[data-testid="stHeader"] {visibility: hidden;}
+    .stDeployButton {display: none !important;}
+    [data-testid="stStatusWidget"] {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
+    .viewerBadge_container__r5tak {display: none !important;}
+    ._profileContainer_gzau3_53 {display: none !important;}
 
     /* ================================================================
        MOBILE RESPONSIVE STYLES
