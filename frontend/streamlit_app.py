@@ -205,13 +205,25 @@ st.markdown(
 
     /* ---- Hide ALL Streamlit branding ---- */
     #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+    footer {display: none !important; visibility: hidden;}
     header[data-testid="stHeader"] {visibility: hidden;}
     .stDeployButton {display: none !important;}
     [data-testid="stStatusWidget"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
     .viewerBadge_container__r5tak {display: none !important;}
     ._profileContainer_gzau3_53 {display: none !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+    .stAppDeployButton {display: none !important;}
+    /* "Built with Streamlit" footer & fullscreen buttons */
+    .reportview-container .main footer,
+    .stApp > footer,
+    footer.css-164nlkn,
+    footer.st-emotion-cache-164nlkn {display: none !important;}
+    [data-testid="manage-app-button"] {display: none !important;}
+    button[title="View fullscreen"] {display: none !important;}
+    .styles_viewerBadge__CvC9N {display: none !important;}
+    ._container_gzau3_1 {display: none !important;}
+    .stBottom {display: none !important;}
 
     /* ================================================================
        MOBILE RESPONSIVE STYLES
