@@ -224,6 +224,9 @@ st.markdown(
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
     .stBottom {display: none !important;}
+    /* Remove iframe embed border */
+    .stApp { outline: none; border: none; }
+    iframe[title="streamlit"] { border: none; }
 
     /* ================================================================
        MOBILE RESPONSIVE STYLES
