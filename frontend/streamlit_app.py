@@ -224,7 +224,23 @@ st.markdown(
     ._container_gzau3_1 {display: none !important;}
     .stBottom {display: none !important; height: 0 !important; min-height: 0 !important;}
     /* Remove iframe embed border & fix scroll */
-    .stApp { outline: none; border: none; overflow: auto; }
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        background: #0E1117 !important;
+    }
+    .stApp {
+        outline: none;
+        border: none;
+        overflow: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    /* Remove top padding from main block */
+    .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
+        padding-top: 1rem !important;
+    }
 
     /* ================================================================
        MOBILE RESPONSIVE STYLES
