@@ -10,3 +10,5 @@
 - Konfirmation: 0.1
 
 
+# Track streamlit uptime
+https://stats.uptimerobot.com/3pDOlcAOKW
