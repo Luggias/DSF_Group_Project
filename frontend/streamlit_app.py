@@ -206,7 +206,6 @@ st.markdown(
     /* ---- Hide ALL Streamlit branding ---- */
     #MainMenu {display: none !important;}
     footer {display: none !important;}
-    header[data-testid="stHeader"] {display: none !important;}
     .stDeployButton {display: none !important;}
     [data-testid="stStatusWidget"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
@@ -222,25 +221,38 @@ st.markdown(
     button[title="View fullscreen"] {display: none !important;}
     .styles_viewerBadge__CvC9N {display: none !important;}
     ._container_gzau3_1 {display: none !important;}
-    /* Bottom toolbar: remove from flow entirely */
+
+    /* Header & bottom: collapse to 0px instead of display:none
+       so Streamlit's internal scroll height calc stays valid */
+    header[data-testid="stHeader"] {
+        height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+    }
     .stBottom,
     [data-testid="stBottom"],
     [data-testid="stBottomBlockContainer"] {
-        display: none !important;
-        position: fixed !important;
         height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
         overflow: hidden !important;
+        visibility: hidden !important;
     }
+
     /* Embed-safe: no border, iOS touch scroll */
     .stApp {
         outline: none !important;
         border: none !important;
         -webkit-overflow-scrolling: touch !important;
     }
-    /* Reduce top gap, generous bottom padding for full scroll reach */
+    /* Reduce top gap, bottom padding for scroll reach */
     .stMainBlockContainer, .block-container, [data-testid="stAppViewBlockContainer"] {
         padding-top: 1rem !important;
-        padding-bottom: 4rem !important;
+        padding-bottom: 2rem !important;
     }
 
     /* ================================================================
