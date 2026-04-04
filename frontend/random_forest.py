@@ -97,8 +97,8 @@ def train_random_forest():
 
     history = (
         df_raw.sort_values("Datum")[TARGET_COL]
-        .fillna(method="ffill")
-        .fillna(method="bfill")
+        .ffill()
+        .bfill()
         .tolist()
     )
     last_known_date = df_raw["Datum"].max().date()
